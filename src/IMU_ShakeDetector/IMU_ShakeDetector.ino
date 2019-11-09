@@ -36,11 +36,13 @@ void setup() {
 void loop() {
   float x, y, z;
 
+  // Read acceleration values
   if (IMU.accelerationAvailable()) {
     IMU.readAcceleration(x, y, z);
-    delay(50);
+    delay(5);
   }
 
+  // If the shake is more than 3G, light on the LED for 1 second
   if(abs(x) > 3 || abs(y) > 3 || abs(z) > 3) {
     digitalWrite(13, HIGH);
     delay(1000);
