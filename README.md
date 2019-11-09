@@ -5,8 +5,7 @@ I wrote this guide because I was a bit frustrated by the lack of information on 
 
 The topics covered in this guide are:
   *  Important things to remember
-  *  Power supply
-  *  Current consumption
+  *  Power supply and current consumption
   *  Sleep mode and idle mode
   *  Usage of Wifi module
   *  Usage of Bluetooth module (BLE)
@@ -29,7 +28,11 @@ See the results of the experiments below regarding the power supply.
 
 *WIP*
 
-## What is the consumption of the Arduino Nano 33 IoT?
+The programs below have been used to test the power consumption of the embedded modules:
+*  **BareMinimum**: Just do nothing, included in Built-in Examples of Arduino IDE.
+*  **Blink**: Blink the internal LED, included in Built-in Examples of Arduino IDE.
+*  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
+*  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code]())
 
 ## How to save power with the Arduino Nano 33 IoT?
 
@@ -57,7 +60,9 @@ Simple programs are available with the library:
 *  [Simple accelerometer](https://github.com/arduino-libraries/Arduino_LSM6DS3/blob/master/examples/SimpleAccelerometer/SimpleAccelerometer.ino)
 *  [Simple gyroscope](https://github.com/arduino-libraries/Arduino_LSM6DS3/blob/master/examples/SimpleGyroscope/SimpleGyroscope.ino)
 
-For the consumption and power supply testing, the program [Shake Detector](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino) has been used.
+Useful ressources:
+*  [Official documentation of the Arduino LSM6DS3 library](https://www.arduino.cc/en/Reference/ArduinoLSM6DS3)
+*  [Datasheet of the ST LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf)
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?
 
