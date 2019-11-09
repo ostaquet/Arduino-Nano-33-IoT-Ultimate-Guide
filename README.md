@@ -35,8 +35,8 @@ See the results of the experiments below regarding the power supply.
 
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
 
-## How to use the IMU (gyroscope & accelerometer) with the Arduino Nano 33 IoT?
-The IMU is the Inertial Measurement Unit. 
+## How to use the Inertial Measurement Unit (IMU) with the Arduino Nano 33 IoT?
+The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by an accelerometer and a gyroscope on 6 axis. 
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?
 
