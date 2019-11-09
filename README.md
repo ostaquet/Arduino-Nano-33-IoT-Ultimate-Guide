@@ -36,7 +36,15 @@ See the results of the experiments below regarding the power supply.
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
 
 ## How to use the Inertial Measurement Unit (IMU) with the Arduino Nano 33 IoT?
-The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by an accelerometer and a gyroscope on 6 axis. 
+The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by an accelerometer and a gyroscope on 6 axis. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A or through the [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3).
+
+To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `LSM6DS3` and install the `Arduino_LSM6DS3` by `Arduino`.
+![GitHub Logo](/images/library_mgr_LSM6DS3.png)
+
+
+
+
+The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by an accelerometer and a gyroscope on 6 axis. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A or through the [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3).
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?
 
