@@ -43,7 +43,9 @@ To install the official library in the Arduino IDE, go in the menu *Tools -> Man
 
 ![GitHub Logo](/images/library_mgr_WifiNINA.png)
 
-
+Useful ressources:
+*  [Official documentation of the WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA)
+*  [Datasheet of the NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf)
 
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
 
