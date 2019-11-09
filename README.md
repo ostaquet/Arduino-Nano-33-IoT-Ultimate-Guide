@@ -26,10 +26,7 @@ According to the box, the Arduino Nano 33 IoT can be powered by the USB connecto
 
 See the results of the experiments below regarding the power supply.
 
-Input    | Voltage | BareMinimum | Blink | IMU_ShakeDetector | Wifi_BasicScanNetworks | Wifi_HTTPS_GET |
--------- | ------- | ----------- | ----- | ----------------- | ---------------------- | -------------- |
-USB      | 5V      | OK          | OK    | OK                | OK                     | OK             | 
-3.3V pin | 3.3V    | 18mA        | 22mA  | 19mA              | 112mA                  | Not working    |
+*WIP*
 
 The programs below have been used to test the power consumption of the embedded modules:
 *  **BareMinimum**: Just do nothing, included in Built-in Examples of Arduino IDE.
