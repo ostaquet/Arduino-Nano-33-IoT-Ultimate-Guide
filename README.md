@@ -33,6 +33,7 @@ The programs below have been used to test the power consumption of the embedded 
 *  **Blink**: Blink the internal LED, included in Built-in Examples of Arduino IDE.
 *  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
 *  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
+*  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
 
 ## How to save power with the Arduino Nano 33 IoT?
 
