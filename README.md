@@ -14,6 +14,8 @@ The topics covered in this guide are:
   *  Usage of Serial communication
 
 ## Important things to remember
+The [official quick start guide](https://www.arduino.cc/en/Guide/NANO33IoT) is available on the Arduino website.
+
 The Arduino Nano 33 IoT **only supports 3.3V** for inputs and outputs (IO pins) and it is not 5V tolerant like most of the other Arduino boards. Connecting more than 3.3V on IO pins will damage the board.
 
 The pinouts is **compatible with the classic Arduino Nano pinouts**. The only difference is that the 5V pin on the classic Arduino Nano is not connected and doesn't supply voltage.
