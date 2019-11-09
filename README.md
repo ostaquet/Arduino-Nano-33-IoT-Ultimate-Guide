@@ -48,7 +48,7 @@ Simple programs are available with the library:
 *  [Simple accelerometer](https://github.com/arduino-libraries/Arduino_LSM6DS3/blob/master/examples/SimpleAccelerometer/SimpleAccelerometer.ino)
 *  [Simple gyroscope](https://github.com/arduino-libraries/Arduino_LSM6DS3/blob/master/examples/SimpleGyroscope/SimpleGyroscope.ino)
 
-For the consumption and power supply testing, the program [Shake Detector]() has been used.
+For the consumption and power supply testing, the program [Shake Detector](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino) has been used.
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?
 
