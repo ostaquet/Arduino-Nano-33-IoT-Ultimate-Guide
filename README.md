@@ -34,6 +34,13 @@ See the results of the experiments below regarding the power supply.
 ## How to save power with the Arduino Nano 33 IoT?
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
+The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf) ESP32 based module. It provides support of Wifi 802.11 b/g/n in the 2.4 GHz band and Bluetooth v4.2 (Bluetooth BR/EDR and Bluetooth Low Energy BLE). The module is fully compatible with the [official WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA).
+
+To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `WifiNINA` and install the `WiFiNINA` by `Arduino`.
+
+![GitHub Logo](/images/library_mgr_WifiNINA.png)
+
+
 
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
 
