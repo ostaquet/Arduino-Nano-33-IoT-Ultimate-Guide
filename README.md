@@ -35,7 +35,7 @@ According to the box, the Arduino Nano 33 IoT can be powered by the USB connecto
 
 See the results of the experiments below regarding the power supply and the peak current consumption per voltage.
 
-*WIP*
+*Work in Progress*
 
 The programs below have been used to test the power consumption of the embedded modules:
 *  **BareMinimum**: Just do nothing, included in Built-in Examples of Arduino IDE.
@@ -55,6 +55,8 @@ Notice that you cannot supply power to the board through this pin, it is only to
 
 ## How to save power with the Arduino Nano 33 IoT?
 
+*Work in Progress*
+
 ## How to use the Wifi with the Arduino Nano 33 IoT?
 The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf) ESP32 based module. It provides support of Wifi 802.11 b/g/n in the 2.4 GHz band and Bluetooth v4.2 (Bluetooth BR/EDR and Bluetooth Low Energy BLE). The module is fully compatible with the [official WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA).
 
@@ -67,6 +69,8 @@ Useful ressources:
 *  [Datasheet of the NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf)
 
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
+
+*Work in Progress*
 
 ## How to use the Inertial Measurement Unit (IMU) with the Arduino Nano 33 IoT?
 The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by a 3-axis accelerometer and a 3-axis gyroscope. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A or through the [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3).
@@ -87,4 +91,8 @@ Useful ressources:
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?)
 
+*Work in Progress*
+
 ## How to use the I2C bus with the Arduino Nano 33 IoT?
+
+*Work in Progress*
