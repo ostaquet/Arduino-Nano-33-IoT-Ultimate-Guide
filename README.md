@@ -25,8 +25,6 @@ The pins A4 and A5 have an internal pull up and are designed to be used as an I2
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
 
-
-
 See the results of the experiments below regarding the power supply and the peak current consumption per voltage.
 
 *WIP*
@@ -41,9 +39,11 @@ The programs below have been used to test the power consumption of the embedded 
 ## How to enable the 5V pin on the Arduino Nano 33 IoT?
 The Arduino Nano 33 IoT has a 5V pin which is not wired by default. If you need 5V for your project and you supply power through USB, you can connect the VUSB jumper to enable 5V power supply on the VUSB pin.
 
-To to that, you just have to solver the VUSB jumper on the board.
+To to that, you just have to solder the VUSB jumper on the board.
 
 ![How to solder VUSB jumper on Arduino Nano 33 IoT](/images/Arduino_Nano_33_IoT_VUSB_jumper.jpg)
+
+Notice that you cannot supply power to the board through this pin, it is only to have a handy 5V for your external components powered by the USB. If you don't power the board through the USB jack, you will stay with 0V on this pin.
 
 ## How to save power with the Arduino Nano 33 IoT?
 
