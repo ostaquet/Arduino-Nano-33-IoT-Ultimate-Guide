@@ -5,6 +5,7 @@ I wrote this guide because I was a bit frustrated by the lack of information on 
 
 The topics covered in this guide are:
   *  Important things to remember
+  *  Unofficial pinout diagram
   *  Power supply and current consumption
   *  Sleep mode and idle mode
   *  Usage of Wifi module
@@ -21,6 +22,13 @@ The Arduino Nano 33 IoT **only supports 3.3V** for inputs and outputs (IO pins) 
 The pinouts is **compatible with the classic Arduino Nano pinouts**. Notice that the classic 5V pin is not wired by default and doesn't provide any power if you don't connect the VUSB jumper.
 
 The pins A4 and A5 have an internal pull up and are designed to be used as an I2C bus. So, **usage of A4 and A5 as analog inputs is not recommended**.
+
+## Unofficial pinout diagram of the Arduino Nano 33 IoT
+
+![Unofficial Arduino Nano 33 IoT pinout diagram](/images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png)
+
+Useful ressources:
+*  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
 
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
