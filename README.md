@@ -18,12 +18,14 @@ The [official quick start guide](https://www.arduino.cc/en/Guide/NANO33IoT) is a
 
 The Arduino Nano 33 IoT **only supports 3.3V** for inputs and outputs (IO pins) and it is not 5V tolerant like most of the other Arduino boards. Connecting more than 3.3V on IO pins will damage the board.
 
-The pinouts is **compatible with the classic Arduino Nano pinouts**. The only difference is that the 5V pin on the classic Arduino Nano is not connected and doesn't supply voltage.
+The pinouts is **compatible with the classic Arduino Nano pinouts**. Notice that the classic 5V pin is not wired by default and doesn't provide any power if you don't connect the VUSB jumper.
 
 The pins A4 and A5 have an internal pull up and are designed to be used as an I2C bus. So, **usage of A4 and A5 as analog inputs is not recommended**.
 
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
+
+
 
 See the results of the experiments below regarding the power supply and the peak current consumption per voltage.
 
@@ -36,6 +38,13 @@ The programs below have been used to test the power consumption of the embedded 
 *  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
 *  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
 
+## How to enable the 5V pin on the Arduino Nano 33 IoT?
+The Arduino Nano 33 IoT has a 5V pin which is not wired by default. If you need 5V for your project and you supply power through USB, you can connect the VUSB jumper to enable 5V power supply on the VUSB pin.
+
+To to that, you just have to solver the VUSB jumper on the board.
+
+
+
 ## How to save power with the Arduino Nano 33 IoT?
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
@@ -43,7 +52,7 @@ The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](h
 
 To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `WifiNINA` and install the `WiFiNINA` by `Arduino`.
 
-![GitHub Logo](/images/library_mgr_WifiNINA.png)
+![How to install WifiNINA with the library manager](/images/library_mgr_WifiNINA.png)
 
 Useful ressources:
 *  [Official documentation of the WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA)
@@ -56,7 +65,7 @@ The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/
 
 To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `LSM6DS3` and install the `Arduino_LSM6DS3` by `Arduino`.
 
-![GitHub Logo](/images/library_mgr_LSM6DS3.png)
+![How to install LSM6DS3 with the library manager](/images/library_mgr_LSM6DS3.png)
 
 The usage is described on the [official Arduino website](https://www.arduino.cc/en/Reference/ArduinoLSM6DS3).
 
