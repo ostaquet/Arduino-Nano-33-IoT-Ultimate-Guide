@@ -11,6 +11,7 @@ The topics covered in this guide are:
   *  Usage of Bluetooth module (BLE)
   *  Usage of Inertial Measurement Unit (IMU)
   *  Usage of Serial communication
+  *  Usage of I2C bus
 
 ## Important things to remember
 The [official quick start guide](https://www.arduino.cc/en/Guide/NANO33IoT) is available on the Arduino website.
@@ -67,5 +68,6 @@ Useful ressources:
 *  [Official documentation of the Arduino LSM6DS3 library](https://www.arduino.cc/en/Reference/ArduinoLSM6DS3)
 *  [Datasheet of the ST LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf)
 
-## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?
+## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?)
 
+## How to use the I2C bus with the Arduino Nano 33 IoT?
