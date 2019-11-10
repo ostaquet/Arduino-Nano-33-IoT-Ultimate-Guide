@@ -23,7 +23,7 @@ The pinouts is **compatible with the classic Arduino Nano pinouts**. Notice that
 
 The pins A4 and A5 have an internal pull up and are designed to be used as an I2C bus. So, **usage of A4 and A5 as analog inputs is not recommended**.
 
-## Unofficial pinout diagram of the Arduino Nano 33 IoT
+## Unofficial Arduino Nano 33 IoT pinout diagram
 
 ![Unofficial Arduino Nano 33 IoT pinout diagram](/images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png)
 
