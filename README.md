@@ -43,7 +43,7 @@ The Arduino Nano 33 IoT has a 5V pin which is not wired by default. If you need 
 
 To to that, you just have to solver the VUSB jumper on the board.
 
-
+![How to solder VUSB jumper on Arduino Nano 33 IoT](/images/Arduino_Nano_33_IoT_VUSB_jumper.jpg)
 
 ## How to save power with the Arduino Nano 33 IoT?
 
