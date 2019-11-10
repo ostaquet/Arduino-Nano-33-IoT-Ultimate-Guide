@@ -13,8 +13,6 @@
 
 #include "Connectivity.h"
 
-char recvBuffer[2048];
-
 void setup() {
   Serial.begin(115200);
   delay(5000);
