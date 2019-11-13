@@ -39,6 +39,7 @@ See the results of the experiments below regarding the power supply and the peak
 *Work in Progress*
 
 The programs below have been used to test the power consumption of the embedded modules:
+*  **Sleep**: Using the watchdog to set the board to idle (see section *How to save power?* below)
 *  **BareMinimum**: Just do nothing, included in Built-in Examples of Arduino IDE.
 *  **Blink**: Blink the internal LED, included in Built-in Examples of Arduino IDE.
 *  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
