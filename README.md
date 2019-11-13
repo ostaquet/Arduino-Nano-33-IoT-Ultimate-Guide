@@ -55,8 +55,41 @@ To to that, you just have to solder the VUSB jumper on the board.
 Notice that you cannot supply power to the board through this pin, it is only to have a handy 5V for your external components powered by the USB. If you don't power the board through the USB jack, you will stay with 0V on this pin.
 
 ## How to save power with the Arduino Nano 33 IoT?
+The common way to save power with microcontroller is to go to sleep and use the watchdog to wakeup. Indeed, most of the power are drain while the microcontroller is doing nothing (i.e. waiting between two sample).
 
-*Work in Progress*
+The very popular [Low-Power library](https://github.com/rocketscream/Low-Power) is supporting the SAMD21G but only after making some patching. A good alternative is to use the [Adafruit SleepyDog Library](https://github.com/adafruit/Adafruit_SleepyDog).
+
+To install the library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `Sleepy` and install the `Adafruit SleepyDog Library` by `Adafruit`.
+
+![How to install SleepyDog with the library manager](/images/library_mgr_SleepyDog.png)
+
+The usage is quite simple:
+
+```
+#include <Adafruit_SleepyDog.h>
+
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, LOW); // Show we're sleeping
+  
+  // Sleep
+  Watchdog.sleep();
+
+  digitalWrite(LED_BUILTIN, HIGH); // Show we're awake again
+  delay(1000);
+}
+```
+
+When you're calling the function `Watchdog.sleep()`, the board will be idle for **16 seconds** and the consumption is going as low as **6mA when powered at 3.3V** (which is quite better than 18mA with the BareMinimum program).
+
+The only trick is when you want to upload a new program on your board... When the board is idle, you cannot upload a new program on it because it is not listening to the USB serial. So, never upload a program without some activities (real activities or fake activities like the `delay(1000)` above) to have the time slot to upload successfully.
+
+Useful resources:
+*  [Adafruit SleepyDog Library](https://github.com/adafruit/Adafruit_SleepyDog)
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
 The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf) ESP32 based module. It provides support of Wifi 802.11 b/g/n in the 2.4 GHz band and Bluetooth v4.2 (Bluetooth BR/EDR and Bluetooth Low Energy BLE). The module is fully compatible with the [official WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA).
