@@ -81,13 +81,13 @@ void loop() {
   Watchdog.sleep();
 
   digitalWrite(LED_BUILTIN, HIGH); // Show we're awake again
-  delay(1000);
+  delay(5000);
 }
 ```
 
 When you're calling the function `Watchdog.sleep()`, the board will be idle for **16 seconds** and the consumption is going as low as **6mA when powered at 3.3V** (which is quite better than 18mA with the BareMinimum program).
 
-The only trick is when you want to upload a new program on your board... When the board is idle, you cannot upload a new program on it because it is not listening to the USB serial. So, never upload a program without some activities (real activities or fake activities like the `delay(1000)` above) to have the time slot to upload successfully.
+The only trick is when you want to upload a new program on your board... When the board is idle, you cannot upload a new program on it because it is not listening to the USB serial. So, never upload a program without some activities (real activities or fake activities like the `delay(5000)` above) to have the time slot to upload successfully.
 
 Useful resources:
 *  [Adafruit SleepyDog Library](https://github.com/adafruit/Adafruit_SleepyDog)
