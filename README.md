@@ -36,7 +36,7 @@ According to the box, the Arduino Nano 33 IoT can be powered by the USB connecto
 
 See the results of the experiments below regarding the power supply and the peak current consumption per voltage.
 
-*Work in Progress*
+![Power consumption table](/images/PowerTable.png)
 
 The programs below have been used to test the power consumption of the embedded modules:
 *  **Sleep**: Using the watchdog to set the board to idle (see section *How to save power?* below)
