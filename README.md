@@ -3,17 +3,6 @@ The purpose of this guide is to assemble the key information to use the Arduino 
 
 I wrote this guide because I was a bit frustrated by the lack of information on the board and most of the insight here is coming from experiments. Some information is also coming from other websites, if it is the case, the resources are mentioned in the sections.
 
-The topics covered in this guide are:
-  *  Important things to remember
-  *  Unofficial pinout diagram
-  *  Power supply and current consumption
-  *  Sleep mode and idle mode
-  *  Usage of Wifi module
-  *  Usage of Bluetooth module (BLE)
-  *  Usage of Inertial Measurement Unit (IMU)
-  *  Usage of Serial communication
-  *  Usage of I2C bus
-
 ## Important things to remember
 The [official quick start guide](https://www.arduino.cc/en/Guide/NANO33IoT) is available on the Arduino website.
 
@@ -30,6 +19,27 @@ The pins A4 and A5 have an internal pull up and are designed to be used as an I2
 Useful ressources:
 *  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
 *  [Official datasheet of Atmel SAMD21G](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Atmel-42181-SAM-D21_Datasheet.pdf)
+
+## Which pins can be used for external interrupt?
+The pins below can be used with `attachInterrupt()` on Nano 33 IoT.
+
+| Board PIN | Internal PIN | Interrupt  |
+|-----|--------------|------------|
+| ~~A2~~  | ~~16~~ | ~~EXTERNAL_INT_0~~  |
+| ~~A3~~  | ~~17~~ | ~~EXTERNAL_INT_1~~  |
+| ~~A6~~  | ~~20~~ | ~~EXTERNAL_INT_4~~  |
+| ~~A7~~  | ~~21~~ | ~~EXTERNAL_INT_5~~  |
+| D2  |  2 | EXTERNAL_INT_2  |
+| D3  |  3 | EXTERNAL_INT_3  |
+| D9  |  9 | EXTERNAL_INT_9  |
+| D10 | 10 | EXTERNAL_INT_10 |
+| D11 | 11 | EXTERNAL_INT_11 |
+
+That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp).
+
+Trials show the analog pins don't seem to work as interrupts.
+
+*Originally shared by @mfreema5 in issue #1.*
 
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
@@ -103,10 +113,6 @@ Useful ressources:
 *  [Official documentation of the WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA)
 *  [Datasheet of the NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf)
 
-## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
-
-*Work in Progress*
-
 ## How to use the Inertial Measurement Unit (IMU) with the Arduino Nano 33 IoT?
 The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by a 3-axis accelerometer and a 3-axis gyroscope. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A or through the [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3).
 
@@ -125,9 +131,5 @@ Useful ressources:
 *  [Datasheet of the ST LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf)
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?)
-
-*Work in Progress*
-
-## How to use the I2C bus with the Arduino Nano 33 IoT?
 
 *Work in Progress*
