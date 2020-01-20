@@ -132,4 +132,88 @@ Useful ressources:
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?)
 
-*Work in Progress*
+There is no `SoftwareSerial.h` available for the Arduino Nano 33 IoT because it is not required. This board offers much more: Hardware serials that can be assigned to different pins.
+
+This feature is offered by the micro controller Atmel SAMD21G and it is called I/O multiplexing (details available page 21 in the [data sheet Atmel SAM D21E / SAM D21G / SAM D21J](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Atmel-42181-SAM-D21_Datasheet.pdf)). The micro controller is offering 6 SERCOM that you can assign to (nearly) any pins.
+
+Some of the SERCOM are already used by the Arduino Nano 33 IoT:
+*  SERCOM2 for SPI NINA
+*  SERCOM3 for MOSI/MISO
+*  SERCOM4 for I2C bus
+*  SERCOM5 for Serial debugging (USB)
+
+We still have the SERCOM0 and SERCOM1.
+
+The details of the pins assignments are described in the `variant.cpp` and `variant.h` files. As Arduino is open-source, you can easily find them on [the GitHub repository for SAMD boards](https://github.com/arduino/ArduinoCore-samd).
+
+For the Arduino Nano 33 IoT, the pins assignments are described in:
+*  [variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp)
+*  [variants/nano_33_iot/variant.h](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.h)
+
+By reading the `variant.cpp`, we understand the pin assignment and especially the link between the SAMD pin (PAxx or PBxx) and the Arduino pin.
+
+The SAMD pins are important to make the link with the PORT Function Multiplexing of [the data sheet Atmel SAM D21E / SAM D21G / SAM D21J](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Atmel-42181-SAM-D21_Datasheet.pdf).
+
+A SERCOM can be *classic* or *alternate*. In the data sheet, the *classic* is in the column C and the *alternate* is in the column D. A SERCOM is defined by its index and the pad. For example: `SERCOM0/PAD[3]` is also called `0.3`.
+
+**Remark:** The pads are defined from 0 to 3 for the RX but the TX is defined only on 0 and 2. It is an important consideration when you choose the pins to use.
+
+For reference, see below the table I used to select the SERCOM to assign:
+![Reference of SERCOM to assign](/images/SERVCOM.png)
+
+Enough of theory, go for the solution...
+
+Add a **hardware serial on pins 5 (RX) and 6 (TX)** of the Arduino Nano 33 IoT:
+```
+#include <Arduino.h>
+#include "wiring_private.h"
+
+Uart mySerial (&sercom0, 5, 6, SERCOM_RX_PAD_1, UART_TX_PAD_0);
+
+// Attach the interrupt handler to the SERCOM
+void SERCOM0_Handler()
+{
+    mySerial.IrqHandler();
+}
+
+void setup() {
+  // Reassign pins 5 and 6 to SERCOM alt
+  pinPeripheral(5, PIO_SERCOM_ALT);
+  pinPeripheral(6, PIO_SERCOM_ALT);
+
+  // Start my new hardware serial
+  mySerial.begin(9600);
+}
+
+void loop() {
+  // Do something with mySerial...
+}
+```
+
+Another example, add a **hardware serial on pins 13 (RX) and 8 (TX)** of the Arduino Nano 33 IoT:
+
+```
+#include <Arduino.h>
+#include "wiring_private.h"
+
+Uart mySerial (&sercom1, 13, 8, SERCOM_RX_PAD_1, UART_TX_PAD_2);
+
+// Attach the interrupt handler to the SERCOM
+void SERCOM1_Handler()
+{
+    mySerial.IrqHandler();
+}
+
+void setup() {
+  // Reassign pins 13 and 8 to SERCOM (not alt this time)
+  pinPeripheral(13, PIO_SERCOM);
+  pinPeripheral(8, PIO_SERCOM);
+
+  // Start my new hardware serial
+  mySerial.begin(9600);
+}
+
+void loop() {
+  // Do something with mySerial...
+}
+```
