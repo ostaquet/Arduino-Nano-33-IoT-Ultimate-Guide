@@ -39,7 +39,7 @@ That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/ma
 
 Trials show the analog pins don't seem to work as interrupts.
 
-Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/issues/1).
+*Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/issues/1).*
 
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
