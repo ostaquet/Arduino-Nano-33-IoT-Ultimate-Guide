@@ -159,7 +159,8 @@ A SERCOM can be *classic* or *alternate*. In the data sheet, the *classic* is in
 **Remark:** The pads are defined from 0 to 3 for the RX but the TX is defined only on 0 and 2. It is an important consideration when you choose the pins to use.
 
 For reference, see below the table I used to select the SERCOM to assign:
-![Reference of SERCOM to assign](/images/SERVCOM.png)
+
+![Reference of SERCOM to assign](/images/SERCOM.png)
 
 Enough of theory, go for the solution...
 
