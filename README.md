@@ -23,17 +23,16 @@ Useful ressources:
 ## Which pins can be used for external interrupt?
 The pins below can be used with `attachInterrupt()` on Nano 33 IoT.
 
-| Board PIN | Internal PIN | Interrupt  |
-|-----|--------------|------------|
-| ~~A2~~  | ~~16~~ | ~~EXTERNAL_INT_0~~  |
-| ~~A3~~  | ~~17~~ | ~~EXTERNAL_INT_1~~  |
-| ~~A6~~  | ~~20~~ | ~~EXTERNAL_INT_4~~  |
-| ~~A7~~  | ~~21~~ | ~~EXTERNAL_INT_5~~  |
-| D2  |  2 | EXTERNAL_INT_2  |
-| D3  |  3 | EXTERNAL_INT_3  |
-| D9  |  9 | EXTERNAL_INT_9  |
-| D10 | 10 | EXTERNAL_INT_10 |
-| D11 | 11 | EXTERNAL_INT_11 |
+| Board PIN | Internal PIN | 
+|----|----|
+| A1  | 15 | 
+| A5  | 19 | 
+| A7  | 21 | 
+| D2  |  2 | 
+| D3  |  3 | 
+| D9  |  9 | 
+| D10 | 10 | 
+| D11 | 11 |
 
 That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp).
 
