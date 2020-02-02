@@ -36,8 +36,6 @@ The pins below can be used with `attachInterrupt()` on Nano 33 IoT.
 
 That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp).
 
-Trials show the analog pins don't seem to work as interrupts.
-
 *Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/issues/1).*
 
 ## How to power the Arduino Nano 33 IoT?
