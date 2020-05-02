@@ -18,6 +18,7 @@ The pins A4 and A5 have an internal pull up and are designed to be used as an I2
 
 Useful ressources:
 *  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
+*  [Official pinout diagram (PDF)](https://content.arduino.cc/assets/Pinout-NANO33IoT_latest.pdf)
 *  [Official datasheet of Atmel SAMD21G](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Atmel-42181-SAM-D21_Datasheet.pdf)
 
 ## Which pins can be used for external interrupt?
@@ -111,8 +112,16 @@ Useful ressources:
 *  [Datasheet of the NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf)
 
 ## How to use the Inertial Measurement Unit (IMU) with the Arduino Nano 33 IoT?
-The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by a 3-axis accelerometer and a 3-axis gyroscope. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A or through the [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3).
+The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by a 3-axis accelerometer and a 3-axis gyroscope. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A.
 
+There are two handy libraries to use the IMU:
+*  The [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3) (for basic features)
+*  The [Sparkfun LSM6DS3 library(https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library) (for advanced features)
+
+Useful ressources:
+*  [Datasheet of the ST LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf)
+
+### The official Arduino LSM6DS3 library (basic usage)
 To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `LSM6DS3` and install the `Arduino_LSM6DS3` by `Arduino`.
 
 ![How to install LSM6DS3 with the library manager](/images/library_mgr_LSM6DS3.png)
@@ -123,9 +132,23 @@ Simple programs are available with the library:
 *  [Simple accelerometer](https://github.com/arduino-libraries/Arduino_LSM6DS3/blob/master/examples/SimpleAccelerometer/SimpleAccelerometer.ino)
 *  [Simple gyroscope](https://github.com/arduino-libraries/Arduino_LSM6DS3/blob/master/examples/SimpleGyroscope/SimpleGyroscope.ino)
 
-Useful ressources:
-*  [Official documentation of the Arduino LSM6DS3 library](https://www.arduino.cc/en/Reference/ArduinoLSM6DS3)
-*  [Datasheet of the ST LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf)
+### The Sparkfun LSM6DS3 library (advanced usage)
+To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `LSM6DS3` and install the `SparkFun LSM6DS3 Breakout` by `SparkFun Electronics`.
+
+![How to install LSM6DS3 with the library manager](/images/library_mgr_LSM6DS3_SparkFun.png)
+
+The usage is described on the [GitHub page of the library](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library). You will notice that this library is offering advanced features like:
+*  Usage through multiples instances on I2C channels and SPI.
+*  Additional driver with math functions to convert raw values to meaningful data.
+*  Usage of built-in buffer to burst-collect data
+
+When you are using this library, don't forget to change the I2C address to 0x6A (by default, the SparkFun module address is 0x6B). The change in the [minimalist example](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library/blob/master/examples/MinimalistExample/MinimalistExample.ino) is in the initialization of the driver. 
+
+The line :
+```LSM6DS3 myIMU;```
+
+Has to be changed with:
+```LSM6DS3 myIMU(I2C_MODE, 0x6A);```
 
 ## How to use serial communication? (Why there is no SoftwareSerial.h in the Arduino Nano 33 IoT?)
 
