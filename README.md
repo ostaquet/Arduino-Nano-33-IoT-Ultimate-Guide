@@ -14,7 +14,7 @@ The pins A4 and A5 have an internal pull up and are designed to be used as an I2
 
 ## Unofficial Arduino Nano 33 IoT pinout diagram
 
-![Unofficial Arduino Nano 33 IoT pinout diagram](/images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png)
+![Unofficial Arduino Nano 33 IoT pinout diagram](images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png)
 
 Useful ressources:
 *  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
@@ -24,15 +24,15 @@ Useful ressources:
 ## Which pins can be used for external interrupt?
 The pins below can be used with `attachInterrupt()` on Nano 33 IoT.
 
-| Board PIN | Internal PIN | 
+| Board PIN | Internal PIN |
 |----|----|
-| A1  | 15 | 
-| A5  | 19 | 
-| A7  | 21 | 
-| D2  |  2 | 
-| D3  |  3 | 
-| D9  |  9 | 
-| D10 | 10 | 
+| A1  | 15 |
+| A5  | 19 |
+| A7  | 21 |
+| D2  |  2 |
+| D3  |  3 |
+| D9  |  9 |
+| D10 | 10 |
 | D11 | 11 |
 
 That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp).
@@ -44,7 +44,7 @@ According to the box, the Arduino Nano 33 IoT can be powered by the USB connecto
 
 See the results of the experiments below regarding the power supply and the peak current consumption per voltage.
 
-![Power consumption table](/images/PowerTable.png)
+![Power consumption table](images/PowerTable.png)
 
 The programs below have been used to test the power consumption of the embedded modules:
 *  **Sleep**: Using the watchdog to set the board to idle (see section *How to save power?* below)
@@ -59,53 +59,22 @@ The Arduino Nano 33 IoT has a 5V pin which is not wired by default. If you need 
 
 To to that, you just have to solder the VUSB jumper on the board.
 
-![How to solder VUSB jumper on Arduino Nano 33 IoT](/images/Arduino_Nano_33_IoT_VUSB_jumper.jpg)
+![How to solder VUSB jumper on Arduino Nano 33 IoT](images/Arduino_Nano_33_IoT_VUSB_jumper.jpg)
 
 Notice that you cannot supply power to the board through this pin, it is only to have a handy 5V for your external components powered by the USB. If you don't power the board through the USB jack, you will stay with 0V on this pin.
 
 ## How to save power with the Arduino Nano 33 IoT?
-The common way to save power with microcontroller is to go to sleep and use the watchdog to wakeup. Indeed, most of the power are drain while the microcontroller is doing nothing (i.e. waiting between two sample).
+There are the recommended approaches to save power with the Arduino Nano 33 IoT:
 
-The very popular [Low-Power library](https://github.com/rocketscream/Low-Power) is supporting the SAMD21G but only after making some patching. A good alternative is to use the [Adafruit SleepyDog Library](https://github.com/adafruit/Adafruit_SleepyDog).
-
-To install the library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `Sleepy` and install the `Adafruit SleepyDog Library` by `Adafruit`.
-
-![How to install SleepyDog with the library manager](/images/library_mgr_SleepyDog.png)
-
-The usage is quite simple:
-
-```
-#include <Adafruit_SleepyDog.h>
-
-void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, HIGH);
-}
-
-void loop() {
-  digitalWrite(LED_BUILTIN, LOW); // Show we're sleeping
-  
-  // Sleep
-  Watchdog.sleep();
-
-  digitalWrite(LED_BUILTIN, HIGH); // Show we're awake again
-  delay(5000);
-}
-```
-
-When you're calling the function `Watchdog.sleep()`, the board will be idle for **16 seconds** and the consumption is going as low as **6mA when powered at 3.3V** (which is quite better than 18mA with the BareMinimum program).
-
-The only trick is when you want to upload a new program on your board... When the board is idle, you cannot upload a new program on it because it is not listening to the USB serial. So, never upload a program without some activities (real activities or fake activities like the `delay(5000)` above) to have the time slot to upload successfully.
-
-Useful resources:
-*  [Adafruit SleepyDog Library](https://github.com/adafruit/Adafruit_SleepyDog)
+- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6mA while sleeping (if powered in 3.3V). [See how to put the Arduino Nano 33 IoT on sleep](SavePowerSleeping.md).
+- Shutdown the power and wake-up based on a RTC clock. This will allow you to go down to 0mA while the power is off and wake up at a specific interval of time (every minutes, every hours...). [See how to shutdown the power of the Arduino Nano 33 IoT and wake up on specific time with the RTC](SavePowerRTC.md).
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
 The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf) ESP32 based module. It provides support of Wifi 802.11 b/g/n in the 2.4 GHz band and Bluetooth v4.2 (Bluetooth BR/EDR and Bluetooth Low Energy BLE). The module is fully compatible with the [official WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA).
 
 To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `WifiNINA` and install the `WiFiNINA` by `Arduino`.
 
-![How to install WifiNINA with the library manager](/images/library_mgr_WifiNINA.png)
+![How to install WifiNINA with the library manager](images/library_mgr_WifiNINA.png)
 
 Useful ressources:
 *  [Official documentation of the WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA)
@@ -124,7 +93,7 @@ Useful ressources:
 ### The official Arduino LSM6DS3 library (basic usage)
 To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `LSM6DS3` and install the `Arduino_LSM6DS3` by `Arduino`.
 
-![How to install LSM6DS3 with the library manager](/images/library_mgr_LSM6DS3.png)
+![How to install LSM6DS3 with the library manager](images/library_mgr_LSM6DS3.png)
 
 The usage is described on the [official Arduino website](https://www.arduino.cc/en/Reference/ArduinoLSM6DS3).
 
@@ -135,7 +104,7 @@ Simple programs are available with the library:
 ### The Sparkfun LSM6DS3 library (advanced usage)
 To install the official library in the Arduino IDE, go in the menu *Tools -> Manage Libraries...* In the library manager, search for `LSM6DS3` and install the `SparkFun LSM6DS3 Breakout` by `SparkFun Electronics`.
 
-![How to install LSM6DS3 with the library manager](/images/library_mgr_LSM6DS3_SparkFun.png)
+![How to install LSM6DS3 with the library manager](images/library_mgr_LSM6DS3_SparkFun.png)
 
 The usage is described on the [GitHub page of the library](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library). You will notice that this library is offering advanced features like:
 *  Usage through multiples instances on I2C channels and SPI.
@@ -180,12 +149,12 @@ A SERCOM can be *classic* or *alternate*. In the data sheet, the *classic* is in
 
 For reference, see below the table I used to select the SERCOM to assign:
 
-![Reference of SERCOM to assign](/images/SERCOM.png)
+![Reference of SERCOM to assign](images/SERCOM.png)
 
 Enough of theory, go for the solution...
 
 Add a **hardware serial on pins 5 (RX) and 6 (TX)** of the Arduino Nano 33 IoT:
-```
+```c++
 #include <Arduino.h>
 #include "wiring_private.h"
 
@@ -213,7 +182,7 @@ void loop() {
 
 Another example, add a **hardware serial on pins 13 (RX) and 8 (TX)** of the Arduino Nano 33 IoT:
 
-```
+```c++
 #include <Arduino.h>
 #include "wiring_private.h"
 
@@ -238,3 +207,4 @@ void loop() {
   // Do something with mySerial...
 }
 ```
+
