@@ -66,7 +66,7 @@ Notice that you cannot supply power to the board through this pin, it is only to
 ## How to save power with the Arduino Nano 33 IoT?
 There are the recommended approaches to save power with the Arduino Nano 33 IoT:
 
-- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6mA while sleeping (if powered in 3.3V). [See how to put the Arduino Nano 33 IoT on sleep](SavePowerSleeping.md).
+- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6mA while sleeping (if powered in 3.3V). [See how to put the Arduino Nano 33 IoT on sleep](SavePowerSleeping.md).
 - Shutdown the power and wake-up based on a RTC clock. This will allow you to go down to 0mA while the power is off and wake up at a specific interval of time (every minutes, every hours...). [See how to shutdown the power of the Arduino Nano 33 IoT and wake up on specific time with the RTC](SavePowerRTC.md).
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
