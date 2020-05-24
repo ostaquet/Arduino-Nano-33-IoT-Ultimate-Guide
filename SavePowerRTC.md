@@ -1,13 +1,13 @@
 # How to save power with the Arduino Nano 33 IoT by shutting down the power and wake up on RTC alarm?
 
-## How to shutdown the power of the Arduino Nano 33 IoT and wake up on specific time with the RTC clock?
+## How to shut down the power of the Arduino Nano 33 IoT and wake up on a specific time with the RTC clock?
 
-In most data capture projects, the microcontroller is spending a tremendous amount of time doing nothing (waiting or sleeping). During this sleeping time, the power is consumed and the batteries are going down. In order to keep your project alive on months/years on battery, the best is to minimize the power consumption while the sleeping cycle.
+In most data capture projects, the microcontroller is spending a tremendous amount of time doing nothing (waiting or sleeping). During this sleeping time, the power is consumed and the batteries are going down. In order to keep your project alive on months/years on the battery, the best is to minimize the power consumption while the sleeping cycle.
 
 The approach described here allows to:
 
-- Shutdown the all power of the circuit during the sleep cycle.
-- Wake up at pre-defined interval (every minute, every hour, every day or at a specific moment).
+- Shutdown all the power of the circuit during the sleep cycle.
+- Wake up at pre-defined intervals (every minute, every hour, every day or at a specific moment).
 - Consume only the power required for the RTC clock.
 
 What do you need?
@@ -27,19 +27,19 @@ If you want to reproduce this circuit on a breadboard:
 
 ![Wake on RTC alarm schematics](images/WakeOnTime_bb.png)
 
-The bevaviour is easy to understand:
+The bevavior is easy to understand:
 
 - The Arduino Nano 33 IoT is piloting the RTC clock via I2C bus to set the alarm and clear the alarm.
 - The alarm of RTC clock is piloting the NPN transistor to open the power on the MOSFET.
 - The Arduino Nano 33 IoT is powered through the MOSFET.
-- The program is running only once and go everytime through the `setup()` and `loop()` functions.
+- The program is running only once and go every time through the `setup()` and `loop()` functions.
 
 The program below is doing:
 
-- Blink the buildin LED 3 times fast at the startup.
+- Blink the built-in LED 3 times fast at the startup.
 - Set the alarm on the RTC to wake up every minute.
-- Blink the building LED 5 seconds.
-- Clear the alarm to shutdown the power.
+- Blink the built-in LED for 5 seconds.
+- Clear the alarm to shut down the power.
 
 ```c++
 // Libraries required
