@@ -66,8 +66,8 @@ Notice that you cannot supply power to the board through this pin, it is only to
 ## How to save power with the Arduino Nano 33 IoT?
 There are the recommended approaches to save power with the Arduino Nano 33 IoT:
 
-- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6 mA while sleeping (if powered in 3.3 V). [See how to put the Arduino Nano 33 IoT on sleep](applewebdata://69C42317-5943-4B22-AF3C-E587FD5CFF7D/SavePowerSleeping.md).
-- Shutdown the power and wake-up based on an RTC clock. This will allow you to go down to 0 mA while the power is off and wake up at a specific interval of time (every minute, every hour...). [See how to shut down the power of the Arduino Nano 33 IoT and wake up on a specific time with the RTC](applewebdata://69C42317-5943-4B22-AF3C-E587FD5CFF7D/SavePowerRTC.md).
+- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6 mA while sleeping (if powered in 3.3 V). [See how to put the Arduino Nano 33 IoT on sleep](/SavePowerSleeping.md).
+- Shutdown the power and wake-up based on an RTC clock. This will allow you to go down to 0 mA while the power is off and wake up at a specific interval of time (every minute, every hour...). [See how to shut down the power of the Arduino Nano 33 IoT and wake up on a specific time with the RTC](/SavePowerRTC.md).
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
 The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf) ESP32 based module. It provides support of Wifi 802.11 b/g/n in the 2.4 GHz band and Bluetooth v4.2 (Bluetooth BR/EDR and Bluetooth Low Energy BLE). The module is fully compatible with the [official WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA).
