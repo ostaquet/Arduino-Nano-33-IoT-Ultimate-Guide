@@ -3,7 +3,9 @@
 
   This example:
    - reads the acceleration values from the LSM6DS3 sensor
-   - sends the position data to the serial
+   - show the position data to the serial
+   - sends the data on BLE
+   - expose the LED status on the BLE
 
   The circuit:
   - Arduino Nano 33 IoT
@@ -18,13 +20,14 @@
 #include <ArduinoBLE.h>
 
 // Define custom BLE service for position (read-only)
-BLEService positionService("95ff7bf8-aa6f-4671-82d9-22a8931c5387");
+BLEService posService("95ff7bf8-aa6f-4671-82d9-22a8931c5387");
 BLEFloatCharacteristic posX("95ff7bf8-aa6f-4671-82d9-22a8931c5387", BLERead);
 BLEFloatCharacteristic posY("f49caa00-17f8-4e92-b5fd-d27137ca4515", BLERead);
 BLEFloatCharacteristic posZ("84f9b003-6d14-44d7-8db1-d574d29c10c3", BLERead);
 
-// BLEService ledService("40369706-e126-4563-b7ae-3a34b45b3ab8");
-// BLEByteCharacteristic switchCharacteristic("40369706-e126-4563-b7ae-3a34b45b3ab8", BLERead | BLEWrite);
+// Define custom BLE service for LED management (read/write)
+BLEService ledService("daaac223-ea6d-411f-8d8e-32bfb46d4bad");
+BLEByteCharacteristic led("40369706-e126-4563-b7ae-3a34b45b3ab8", BLERead | BLEWrite);
 
 void setup() {
   // Initialize internal LED (for visual debugging)
@@ -59,18 +62,22 @@ void setup() {
   }
 
   // Set advertised local name and services UUID
-  BLE.setLocalName("Nano33IoT");
+  BLE.setDeviceName("Arduino Nano 33 IoT");
+  BLE.setLocalName("BLE Experiment");
 
-  BLE.setAdvertisedService(positionService);
-  positionService.addCharacteristic(posX);
-  positionService.addCharacteristic(posY);
-  positionService.addCharacteristic(posZ);
-  BLE.addService(positionService);
+  posService.addCharacteristic(posX);
+  posService.addCharacteristic(posY);
+  posService.addCharacteristic(posZ);
+  BLE.addService(posService);
+
+  ledService.addCharacteristic(led);
+  BLE.addService(ledService);
 
   // Set default values for characteristics
   posX.writeValue((float)0.0);
   posY.writeValue((float)0.0);
   posZ.writeValue((float)0.0);
+  led.writeValue(0);
 
   // Start advertising
   BLE.advertise();
@@ -89,14 +96,11 @@ void loop() {
   // While central is still connected...
   while(central.connected()) {
     float x, y, z;
+    byte ledValue = 0x0;
 
     // Read gyroscope values
     if (IMU.gyroscopeAvailable()) {
       IMU.readGyroscope(x, y, z);
-      delay(900);
-      digitalWrite(LED_BUILTIN, HIGH);
-      delay(100);
-      digitalWrite(LED_BUILTIN, LOW);
     }
 
     // Display gyroscope values on serial
@@ -106,11 +110,23 @@ void loop() {
     Serial.print(y);
     Serial.print(",");
     Serial.println(z);
+    Serial.print("LED is ");
+    Serial.println(ledValue);
 
     // Write values on BLE
     posX.writeValue(x);
     posY.writeValue(y);
     posZ.writeValue(z);
+    led.readValue(ledValue);
+
+    // Read values on BLE
+    if(ledValue == 0x0) {
+      digitalWrite(LED_BUILTIN, LOW);
+    } else {
+      digitalWrite(LED_BUILTIN, HIGH);
+    }
+
+    delay(1000);
   }
 
   // when the central disconnects, print it out:
