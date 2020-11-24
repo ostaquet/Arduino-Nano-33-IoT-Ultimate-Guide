@@ -52,7 +52,8 @@ The programs below have been used to test the power consumption of the embedded 
 *  **Blink**: Blink the internal LED, included in Built-in Examples of Arduino IDE.
 *  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
 *  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](blob/master/src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
-*  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](blob/master/src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
+*  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
+*  **BLE**: Use the BLE to show the position of the IMU and allow the central device to switch on/off the internal LED ([source code](src/BLE/BLE.ino))
 
 ## How to enable the 5V pin on the Arduino Nano 33 IoT?
 The Arduino Nano 33 IoT has a 5V pin which is not wired by default. If you need 5V for your project and you supply power through USB, you can connect the VUSB jumper to enable 5V power supply on the VUSB pin.
