@@ -93,7 +93,7 @@ The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/
 
 There are two handy libraries to use the IMU:
 *  The [official Arduino LSM6DS3 library](https://github.com/arduino-libraries/Arduino_LSM6DS3) (for basic features)
-*  The [Sparkfun LSM6DS3 library(https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library) (for advanced features)
+*  The [Sparkfun LSM6DS3 library](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library) (for advanced features)
 
 Useful ressources:
 *  [Datasheet of the ST LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf)
