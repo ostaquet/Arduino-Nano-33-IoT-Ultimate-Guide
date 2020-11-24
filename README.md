@@ -84,7 +84,7 @@ Useful ressources:
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
 The communication module on the Arduino Nano 33 IoT includes both Wifi and Bluetooth. You can use the Arduino Nano 33 IoT as BLE and Bluetooth client and host device; it means that you can use the Nano as central or peripheral device.
 
-In terms of performance, the BLE on the Arduino Nano 33 IoT is consuming much less than the Wifi and support good range for many different usage. At 3.3V, the [sketch  BLE experiment](src/BLE/BLE.ino) consuming only 47mA instead of 110mA for the Wifi. The range is around 7 meters indoor (with two walls) and more than 25 meters outside without obstacles.
+In terms of performance, the BLE on the Arduino Nano 33 IoT is consuming much less than the Wifi and support good range for many different usage. At 3.3V, the [sketch  BLE experiment](src/BLE/BLE.ino) consuming only 47mA instead of 110mA for the Wifi. The range is around 7m (23ft) indoor (with two walls) and more than 50m (165ft) outside without obstacles.
 
 In order to use the Bluetooth or BLE features, the [official Arduino BLE library](https://www.arduino.cc/en/Reference/ArduinoBLE) is the best starting point.
 
