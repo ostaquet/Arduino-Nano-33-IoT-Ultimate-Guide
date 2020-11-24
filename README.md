@@ -17,7 +17,7 @@ The pins A4 and A5 have an internal pull up and are designed to be used as an I2
 ![Unofficial Arduino Nano 33 IoT pinout diagram](images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png)
 
 Useful ressources:
-*  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
+*  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
 *  [Official pinout diagram (PDF)](https://content.arduino.cc/assets/Pinout-NANO33IoT_latest.pdf)
 *  [Official datasheet of Atmel SAMD21G](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Atmel-42181-SAM-D21_Datasheet.pdf)
 
@@ -37,7 +37,7 @@ The pins below can be used with `attachInterrupt()` on Nano 33 IoT.
 
 That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp).
 
-*Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/issues/1).*
+*Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](issues/1).*
 
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
