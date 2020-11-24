@@ -17,7 +17,7 @@ The pins A4 and A5 have an internal pull up and are designed to be used as an I2
 ![Unofficial Arduino Nano 33 IoT pinout diagram](images/Arduino%20Nano%2033%20IoT%20pinout%20diagram.png)
 
 Useful ressources:
-*  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
+*  [Unofficial Arduino Nano 33 IoT pinout diagram (PDF)](raw/master/resources/Arduino%20Nano%2033%20IoT%20pinout%20diagram.pdf)
 *  [Official pinout diagram (PDF)](https://content.arduino.cc/assets/Pinout-NANO33IoT_latest.pdf)
 *  [Official datasheet of Atmel SAMD21G](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Atmel-42181-SAM-D21_Datasheet.pdf)
 
@@ -50,9 +50,9 @@ The programs below have been used to test the power consumption of the embedded 
 *  **Sleep**: Using the watchdog to set the board to idle (see section *How to save power?* below)
 *  **BareMinimum**: Just do nothing, included in Built-in Examples of Arduino IDE.
 *  **Blink**: Blink the internal LED, included in Built-in Examples of Arduino IDE.
-*  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
-*  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
-*  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](https://github.com/ostaquet/arduino-nano-33-iot-ultimate-guide/blob/master/src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
+*  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
+*  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](blob/master/src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
+*  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](blob/master/src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
 
 ## How to enable the 5V pin on the Arduino Nano 33 IoT?
 The Arduino Nano 33 IoT has a 5V pin which is not wired by default. If you need 5V for your project and you supply power through USB, you can connect the VUSB jumper to enable 5V power supply on the VUSB pin.
@@ -66,8 +66,8 @@ Notice that you cannot supply power to the board through this pin, it is only to
 ## How to save power with the Arduino Nano 33 IoT?
 There are the recommended approaches to save power with the Arduino Nano 33 IoT:
 
-- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6 mA while sleeping (if powered in 3.3 V). [See how to put the Arduino Nano 33 IoT on sleep](/SavePowerSleeping.md).
-- Shutdown the power and wake-up based on an RTC clock. This will allow you to go down to 0 mA while the power is off and wake up at a specific interval of time (every minute, every hour...). [See how to shut down the power of the Arduino Nano 33 IoT and wake up on a specific time with the RTC](/SavePowerRTC.md).
+- Shutdown all useless components (Wifi, IMU...) and put the microcontroller (SAMD21G) in sleep mode. This will allow you to go down to 6 mA while sleeping (if powered in 3.3 V). [See how to put the Arduino Nano 33 IoT on sleep](SavePowerSleeping.md).
+- Shutdown the power and wake-up based on an RTC clock. This will allow you to go down to 0 mA while the power is off and wake up at a specific interval of time (every minute, every hour...). [See how to shut down the power of the Arduino Nano 33 IoT and wake up on a specific time with the RTC](SavePowerRTC.md).
 
 ## How to use the Wifi with the Arduino Nano 33 IoT?
 The Wifi module embedded on the Arduino Nano 33 IoT is the popular [NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf) ESP32 based module. It provides support of Wifi 802.11 b/g/n in the 2.4 GHz band and Bluetooth v4.2 (Bluetooth BR/EDR and Bluetooth Low Energy BLE). The module is fully compatible with the [official WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA).
@@ -79,6 +79,13 @@ To install the official library in the Arduino IDE, go in the menu *Tools -> Man
 Useful ressources:
 *  [Official documentation of the WiFiNINA library](https://www.arduino.cc/en/Reference/WiFiNINA)
 *  [Datasheet of the NINA W102](https://www.u-blox.com/sites/default/files/NINA-W10_DataSheet_%28UBX-17065507%29.pdf)
+
+## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
+The communication module on the Arduino Nano 33 IoT includes both Wifi and Bluetooth. You can use the Arduino Nano 33 IoT as BLE and Bluetooth client and host device; it means that you can use the Nano as central or peripheral device.
+
+In terms of performance, the BLE on the Arduino Nano 33 IoT is consuming much less than the Wifi and support good range for many different usage. At 3.3V, the [sketch  BLE experiment](blob/master/src/BLE/BLE.ino) consuming only 47mA instead of 110mA for the Wifi. The range is around 7 meters indoor (with two walls) and more than 25 meters outside without obstacles.
+
+In order to use the Bluetooth or BLE features, the [official Arduino BLE library](https://www.arduino.cc/en/Reference/ArduinoBLE) is the best starting point.
 
 ## How to use the Inertial Measurement Unit (IMU) with the Arduino Nano 33 IoT?
 The IMU embedded in the Arduino Nano 33 IoT is the [LSM6DS3](https://www.st.com/resource/en/datasheet/lsm6ds3.pdf). It is composed by a 3-axis accelerometer and a 3-axis gyroscope. The LSM6DS3 on the Arduino Nano 33 IoT can be use easily through the I2C bus on the slave address 0x6A.
@@ -111,7 +118,7 @@ The usage is described on the [GitHub page of the library](https://github.com/sp
 *  Additional driver with math functions to convert raw values to meaningful data.
 *  Usage of built-in buffer to burst-collect data
 
-When you are using this library, don't forget to change the I2C address to 0x6A (by default, the SparkFun module address is 0x6B). The change in the [minimalist example](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library/blob/master/examples/MinimalistExample/MinimalistExample.ino) is in the initialization of the driver. 
+When you are using this library, don't forget to change the I2C address to 0x6A (by default, the SparkFun module address is 0x6B). The change in the [minimalist example](https://github.com/sparkfun/SparkFun_LSM6DS3_Arduino_Library/blob/master/examples/MinimalistExample/MinimalistExample.ino) is in the initialization of the driver.
 
 The line :
 ```LSM6DS3 myIMU;```
@@ -207,4 +214,3 @@ void loop() {
   // Do something with mySerial...
 }
 ```
-

@@ -36,3 +36,6 @@
 *.elf
 *.hex
 *.map
+
+# Useless MacOS files
+.DS_Store
