@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Build SAMD
+*.bin
+*.elf
+*.hex
+*.map
+
+# Useless MacOS files
+.DS_Store
