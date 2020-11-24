@@ -37,7 +37,7 @@ The pins below can be used with `attachInterrupt()` on Nano 33 IoT.
 
 That information was extracted from [github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp](https://github.com/arduino/ArduinoCore-samd/blob/master/variants/nano_33_iot/variant.cpp).
 
-*Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](issues/1).*
+*Originally shared by [@mfreema5](https://github.com/mfreema5) in [issue #1](https://github.com/ostaquet/Arduino-Nano-33-IoT-Ultimate-Guide/issues/1).*
 
 ## How to power the Arduino Nano 33 IoT?
 According to the box, the Arduino Nano 33 IoT can be powered by the USB connector (5V) or through the Vin pin (4.5V - 21V) while its operating voltage is 3.3V. However, it seems that the supply voltage depends on the usage. There is a [discussion on the Arduino forum about this topic](https://forum.arduino.cc/index.php?topic=624569.0).
@@ -50,8 +50,8 @@ The programs below have been used to test the power consumption of the embedded 
 *  **Sleep**: Using the watchdog to set the board to idle (see section *How to save power?* below)
 *  **BareMinimum**: Just do nothing, included in Built-in Examples of Arduino IDE.
 *  **Blink**: Blink the internal LED, included in Built-in Examples of Arduino IDE.
-*  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](blob/master/src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
-*  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](blob/master/src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
+*  **IMU_ShakeDetector**: Use the IMU to detect acceleration and light on the internal LED ([source code](src/IMU_ShakeDetector/IMU_ShakeDetector.ino))
+*  **Wifi_BasicScanNetworks**: Use the Wifi to scan networks and light on the internal LED if there are networks available ([source code](src/Wifi_BasicScanNetworks/Wifi_BasicScanNetworks.ino))
 *  **Wifi_HTTPS_GET**: Use the Wifi to get the www.google.com page with SSL enabled and light on the internal LED if everything goes fine ([source code](src/Wifi_HTTPS_GET/Wifi_HTTPS_GET.ino))
 *  **BLE**: Use the BLE to show the position of the IMU and allow the central device to switch on/off the internal LED ([source code](src/BLE/BLE.ino))
 
@@ -84,7 +84,7 @@ Useful ressources:
 ## How to use the Bluetooth (BLE) with the Arduino Nano 33 IoT?
 The communication module on the Arduino Nano 33 IoT includes both Wifi and Bluetooth. You can use the Arduino Nano 33 IoT as BLE and Bluetooth client and host device; it means that you can use the Nano as central or peripheral device.
 
-In terms of performance, the BLE on the Arduino Nano 33 IoT is consuming much less than the Wifi and support good range for many different usage. At 3.3V, the [sketch  BLE experiment](blob/master/src/BLE/BLE.ino) consuming only 47mA instead of 110mA for the Wifi. The range is around 7 meters indoor (with two walls) and more than 25 meters outside without obstacles.
+In terms of performance, the BLE on the Arduino Nano 33 IoT is consuming much less than the Wifi and support good range for many different usage. At 3.3V, the [sketch  BLE experiment](src/BLE/BLE.ino) consuming only 47mA instead of 110mA for the Wifi. The range is around 7 meters indoor (with two walls) and more than 25 meters outside without obstacles.
 
 In order to use the Bluetooth or BLE features, the [official Arduino BLE library](https://www.arduino.cc/en/Reference/ArduinoBLE) is the best starting point.
 
