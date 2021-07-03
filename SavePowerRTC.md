@@ -10,6 +10,10 @@ The approach described here allows to:
 - Wake up at pre-defined intervals (every minute, every hour, every day or at a specific moment).
 - Consume only the power required for the RTC clock.
 
+As you can see, the circuit consumes <0.1mA during sleeping.
+
+![Video](images/WakeOnTime.gif)
+
 What do you need?
 
 - RTC DS3231 module (I use the ChronoDot 2.1 by Macetech but any DS3231 module with the INT pin wired is OK)
