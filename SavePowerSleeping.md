@@ -33,6 +33,8 @@ void loop() {
 
 When you're calling the function `Watchdog.sleep()`, the board will be idle for **16 seconds** and the consumption is going as low as **6mA when powered at 3.3V** (which is quite better than 18mA with the BareMinimum program).
 
+The function `Watchdog.sleep()` sets the MCU in `STANDBY` mode. According to the [datasheet of the SAMD21](https://microchipdeveloper.com/32arm:samd21-pm-overview), the `STANDBY` mode is the lowest power consumption mode available on a SAMD21 MCU. In `STANDBY` mode, all system clocks are disabled and the voltage regulators are set to run in low power mode.
+
 The only trick is when you want to upload a new program on your board... When the board is idle, you cannot upload a new program on it because it is not listening to the USB serial. So, never upload a program without some activities (real activities or fake activities like the `delay(5000)` above) to have the time slot to upload successfully.
 
 Useful resources:
