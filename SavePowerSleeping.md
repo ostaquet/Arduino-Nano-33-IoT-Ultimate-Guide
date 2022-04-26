@@ -18,6 +18,7 @@ The usage is quite simple:
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
+  delay(16000);
 }
 
 void loop() {
